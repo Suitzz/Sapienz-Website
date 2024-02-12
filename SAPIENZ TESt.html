@@ -1,86 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="sapienz-logo.png" type="image/x-icon">
-    <title>Sapienz</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
-</head>
+    <title>Fody Slider</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/patreon.css">
 
-<body>
+  </head>
 
-    <div class="container">
-        <!-- Sapienz Logo -->
-        <img src="sapienz-full.svg" alt="sapienz logo" class="img">
-
-        <!-- Social Media Icons -->
-        <ul class="wrapper">
-            <li class="icon twitter">
-                <a href="https://twitter.com/moontize_PT" target="_blank">
-                    <span><i class="fab fa-twitter"></i></span>
-                </a>
-            </li>
-            <li class="icon youtube">
-                <a href="https://www.youtube.com/@Nahmek_" target="_blank">
-                    <span><i class="fab fa-youtube"></i></span>
-                </a>
-            </li>   
-            <li class="icon tiktok">
-                <a href="https://www.tiktok.com/@moontize_en?lang=pt-BR" target="_blank">
-                    <span><i class="fab fa-tiktok"></i></span>
-                </a>
-            </li>
-        </ul>
-
-        <h1 class="learnText">LEARN HOW TO INVEST</h1>
-<!-- Price Row -->
-<div class="price-row">
-    <!-- Starter Price Column -->
-    <div class="price-col">
-        <p>Passive</p>
-        <h3>7,42$ <span>/ month</span></h3>
-        <ul class="list">
-            <li>Extra Videos</li>
-            <li>Classes</li>
-            <li>Public Portfolio</li>
-        </ul>
-        <button class="button" onclick="window.location.href='https://www.patreon.com/nahmek';">Become a Patreon</button>
-    </div>
-    
-    <!-- Advanced Price Column -->
-    <div class="price-col">
-        <p>Active</p>
-        <h3>37,87$ <span>/ month</span></h3>
-        <ul class="list">
-            <li>All Passive +</li>
-            <li>Discord Group</li>
-            <li>Livestreams</li>
-            <li>Stock Analyzes</li>
-            <li>Oportunities</li>
-            <li>Group Portfolio</li>
-        </ul>
-        <button class="button" onclick="window.location.href='https://www.patreon.com/nahmek';">Become a Patreon</button>
-    </div>
-    
-    <!-- Premium Price Column -->
-    <div class="price-col">
-        <p>Premium</p>
-        <h3>194,41$ <span>/ month</span></h3>
-        <ul class="list">
-            <li>All Passive +</li>
-            <li>All Active +</li>
-            <li>Direct Connection</li>
-            <li>Live Call</li>
-            <li>Training Plan</li>
-        </ul>
-        <button class="button" onclick="window.location.href='https://www.patreon.com/nahmek';">Become a Patreon</button>
+  <body>
+    <div class="imageContainer">
+    <img src="assets/img/sapienz.png" alt="Sapienz" class="image">
+  </div>
+    <div class="mainContainer">
+        <div class="video">
+            <video controls src="assets/vids/YOUTUBE_1.mp4" class="video"></video>
+        </div>
     </div>
 
-</div>
-</div>
-</body>
+    <h1 class="firstTitle">Escolhe <br> o teu ritmo!</h1>
+    <section id="tranding">
+      <div class="container">
+        <div class="swiper tranding-slider">
+          <div class="swiper-wrapper">
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img image1">
+                <img src="/assets/img/Patreon Card Cinza Azul 2.png" alt="Tranding">
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="/assets/img/WhatsApp Card Cinza V2.png" alt="Tranding">
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            <div class="swiper-slide tranding-slide">
+              <div class="tranding-slide-img">
+                <img src="/assets/img/Discord Card Cinza V2.png" alt="Tranding">
+              </div>
+            </div>
+            <!-- Slide-end -->
+            <!-- Slide-start -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h1 class="secondTitle">Ganha <br> Super Poderes!</h1>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/patreon.js"></script>
+  </body>
 
 </html>
