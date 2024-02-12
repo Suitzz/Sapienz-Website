@@ -1,235 +1,392 @@
-/* Global Styles */
-* {
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('/fonts/AvenirNextLTPro-Regular.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNextBold';
+    src: url('/fonts/AvenirNextLTPro-Bold.otf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Global styles */
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+    list-style-type: none;
+    text-decoration: none;
 }
 
-*:focus,
-*:active {
-    outline: none !important;
-    -webkit-tap-highlight-color: transparent;
+:root {
+    --primary: #002244;
+    --white: #ffffff;
+    --bg: #001022;
 }
 
-html,
-body {
-    display: grid;
-    height: 100%;
-    width: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    place-items: center;
-    background: linear-gradient(315deg, #ffffff, #d7e1ec);
-}
-
-.learnText {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    font-size: 36px;
-    color: white;
-}
-
-/* Container Styles */
-.container {
-    width: 100%;
-    min-height: 100vh;
-    background: #5c539d;
-}
-
-/* Sapienz Logo Styles */
-.img {
-    width: 50%;
-    height: auto;
-    margin-bottom: 2%;
-    margin-left: 25%;
-    padding-top: 2%;
-}
-/* Social Media Icons Styles */
-.wrapper {
-    display: inline-flex;
-    list-style: none;
-    margin-left: 42%;
-}
-
-.wrapper .icon {
-    position: relative;
-    background: #ffffff;
-    border-radius: 50%;
-    padding: 15px;
-    margin: 10px;
-    width: 50px;
-    height: 50px;
-    font-size: 18px;
+html {
+    font-family: "Montserrat", sans-serif;
+    scroll-behavior: smooth;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+body {
+    font-size: 1.6rem;
+    background: var(--bg);
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+    width: 0; /* Adjust the width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #001022; /* Darker shade of the page background or another color */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary); /* Use the primary color for the thumb */
+    border-radius: 6px; /* Optional: add border-radius to the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #002244; /* Darker or lighter shade of the primary color on hover */
+}
+
+/* Adjustments for logo visibility */
+.imageContainer, .image {
+    /* Ensure these containers are not accidentally hidden */
+    width: auto; /* Adjust width as necessary */
+    max-width: 100%; /* Prevent overflow */
+    height: auto; /* Adjust height as necessary */
+    display: flex; /* Keep flex display */
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.image:hover {
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.wrapper .icon a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.wrapper .tooltip {
-    position: absolute;
-    top: 0;
-    font-size: 14px;
-    background: #ffffff;
-    color: #ffffff;
-    padding: 5px 8px;
-    border-radius: 5px;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .tooltip::before {
-    position: absolute;
-    content: "";
-    height: 8px;
-    width: 8px;
-    background: #ffffff;
-    bottom: -3px;
-    left: 50%;
-    transform: translate(-50%) rotate(45deg);
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.wrapper .icon:hover .tooltip {
-    top: -45px;
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-}
-
-.wrapper .icon:hover span,
-.wrapper .icon:hover .tooltip {
-    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
-}
-
-.wrapper .twitter:hover,
-.wrapper .twitter:hover .tooltip,
-.wrapper .twitter:hover .tooltip::before {
-    background: #222222;
-    color: #ffffff;
-}
-
-.wrapper .youtube:hover,
-.wrapper .youtube:hover .tooltip,
-.wrapper .youtube:hover .tooltip::before {
-    background: #cd201f;
-    color: #ffffff;
-}
-
-.wrapper .patreon:hover,
-.wrapper .patreon:hover .tooltip,
-.wrapper .patreon:hover .tooltip::before {
-    background: #FF4500;
-    color: #ffffff;
-}
-
-.wrapper .tiktok:hover,
-.wrapper .tiktok:hover .tooltip,
-.wrapper .tiktok:hover .tooltip::before {
-    background: linear-gradient(to right, #FF3E59, #0088CC);
-    color: #ffffff;
-    transition: all 0s ease-in-out;
+.mainContainer {
+    background-color: transparent;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .video {
-    margin-left: 50px;
-}
-
-.price-row {
-    width: 90%;
-    max-width: 1100px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 25px;
-}
-
-/* ... (unchanged styles) ... */
-
-/* Price Column Styles */
-.price-col {
-    background-color: #1f283b;
-    padding: 10% 15%;
-    border-radius: 10px;
-    color: white;
-    text-align: center;
-    position: relative;
+    margin-top: -5%;
+    width: 85%;
+    justify-content: center;
+    align-items: center;
     display: flex;
-    flex-direction: column;
 }
 
-/* Price Title Styles */
-.price-col p {
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 0px; /* Adjusted margin here */
+h1 {
+    font-size: 32px;
+    font-family: AvenirNextBold;
+    text-align: center;
+    color: #fff;
 }
 
-/* ... (unchanged styles) ... */
-
-
-/* Price Amount Styles */
-.price-col h3 {
-    font-size: 44px;
-    margin: 10px 0 20px; /* Adjusted margin here */
-    font-weight: 500;
+.firstTitle {
+    margin-top: 3%;
 }
 
-.price-col h3 span {
-    font-size: 16px;
+.secondTitle{
+   font-family: AvenirNextBold;
+    margin-top: -32%;
 }
 
-/* List Styles */
-.price-col ul {
-    text-align: left;
-    margin: 10px 0; /* Adjusted margin here */
-    color: #ddd;
-    list-style: none;
+.container {
+  position: relative;
+  max-width:412px; /* Adjust as needed */
+  margin: 0 auto;
+  overflow: hidden; /* Ensure the gradients don't extend outside the container */
+}
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 0px; /* Adjust the width of the fade effect */
+  z-index: 2;
+  pointer-events: none; /* Ensure clicks pass through */
+}
+
+.container::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,16,34,1) 50%, rgba(0,16,34,0) 100%);
+}
+
+.container::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,16,34,1) 50%, rgba(0,16,34,0) 100%);
 }
 
 
-.price-col ul li {
-    margin: 15px 0;
+.text-center {
+    text-align: center;
 }
 
-/* Checkmark and Cross Styles */
-.price-col ul li::before {
-    content: '\2713';
-    color: #2ecc71;
-    font-weight: bold;
-    margin-right: 8px;
+.section-heading {
+    font-size: 3rem;
+    color: var(--primary);
+    padding: 2rem 0;
 }
 
-.price-col ul li.crossed::before {
-    content: '\2718';
-    color: #e74c3c;
+#tranding {
+    margin-top: -30%;
+    padding: 4rem 0;
+    background:transparent;
 }
 
-.price-col button {
-    width: 100%;
-    padding: 14px 0;
-    background-color: transparent;
-    color: white;
-    font-size: 15px;
-    border: 1px solid #e33058;
-    border-radius: 6px;
-    margin-top: auto;
-    cursor: pointer;
-    transition: background 0.5s;
+.tranding-slider {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
 }
 
-.price-col button:hover {
-    background: #e33058;
+
+#tranding .tranding-slider {
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 0;
 }
 
+.tranding-slide {
+    width: auto; /* Adjusted for horizontal alignment */
+    display: flex; /* Flex layout for centering content */
+    justify-content: center;
+    align-items: center;
+}
+
+.tranding-slide .tranding-slide-img img {
+    width: 250px; /* Adjusted image width */
+    height: 225px; /* Adjusted image height */
+    border-radius: 2rem;
+    object-fit: cover;
+}
+/* Targeting all slides */
+.tranding-slide .tranding-slide-img img {
+  transition: transform 0.5s ease; /* Smooth transition for scaling */
+}
+
+/* Assuming your central slide has a specific class when active; for example, '.swiper-slide-active' */
+.swiper-slide-active .tranding-slide-img img {
+  transform: scale(1); /* Keep the central image at normal size */
+}
+
+/* You can adjust this scale value as needed */
+.swiper-slide-next .tranding-slide-img img,
+.swiper-slide-prev .tranding-slide-img img {
+  transform: scale(0.9); /* Smaller scale for images on the sides */
+}
+
+.tranding-slide-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    color: var(--white);
+}
+
+.food-price, .tranding-slide-content-bottom {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
+.tranding-slide-content-bottom {
+    bottom: 2rem;
+    left: 2rem;
+}
+
+.rating ion-icon {
+    color: var(--primary);
+}
+
+.tranding-slider::before,
+.tranding-slider::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 50px; /* Adjust the width of the fade effect as needed */
+    pointer-events: none;
+    z-index: 10;
+    background: linear-gradient(to right, var(--bg) 0%, rgba(0,16,34,0) 100%);
+}
+
+.tranding-slider::after {
+    right: 0;
+    background: linear-gradient(to left, var(--bg) 0%, rgba(0,16,34,0) 100%);
+}
+
+
+.tranding-slider::before {
+    left: 0;
+}
+
+.swiper-slide-shadow-left, .swiper-slide-shadow-right,
+.swiper-slide::before, .swiper-slide::after {
+    display: none !important;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center; /* Center content within the slide */
+    width:auto;
+}
+
+@media screen and (min-width: 320px){
+  .image {
+        width: 80%; /* Adjust based on your logo size */
+        margin-top: -20%; /* Adjust margin to ensure visibility */
+    }
+
+.video {
+  margin-top: -8%;
+  width: 85%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#tranding {
+  margin-top: -25%;
+  padding: 4rem 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.container {
+    background: transparent;
+  max-width: 482px;
+  padding: 0 1rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tranding-slide .tranding-slide-img img {
+  width: 300px; /* Adjusted image width */
+  height: 325px; /* Adjusted image height */
+  border-radius: 2rem;
+  object-fit: cover;
+}
+
+.secondTitle{
+  font-family: AvenirNextBold;
+   margin-top: -22%;
+}
+}
+@media screen and (min-width: 768px){
+  .image {
+        width: 80%; /* Increase width for smaller devices */
+        margin-top: 0; /* Adjust margin to ensure visibility */
+    }
+
+.video {
+  margin-top: -5%;
+  width: 75%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#tranding {
+  margin-top: -12%;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 558px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.tranding-slide .tranding-slide-img img {
+  width: 300px; /* Adjusted image width */
+  height: 325px; /* Adjusted image height */
+  border-radius: 2rem;
+  object-fit: cover;
+}
+.firstTitle{
+  font-size: 50px;
+  margin-top: 1%;
+}
+.secondTitle{
+  font-size: 50px;
+   margin-top: -13%;
+}
+.swiper-slide-next .tranding-slide-img img,
+.swiper-slide-prev .tranding-slide-img img {
+  transform: scale(0.9); /* Smaller scale for images on the sides */
+}
+}
+
+@media screen and (min-width: 1024px){
+  .image {
+    width: 30%;
+    margin-top: -8%;
+}
+
+.video {
+  margin-top: -5%;
+  width: 45%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+#tranding {
+  margin-top: -6%;
+  padding: 4rem 0;
+}
+
+.container {
+  max-width: 558px;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.tranding-slide .tranding-slide-img img {
+  width: 300px; /* Adjusted image width */
+  height: 325px; /* Adjusted image height */
+  border-radius: 2rem;
+  object-fit: cover;
+}
+.firstTitle{
+font-size:36px;
+  margin-top: 1%;
+}
+.secondTitle{
+  font-size:36px;
+   margin-top: -7%;
+}
+.swiper-slide-next .tranding-slide-img img,
+.swiper-slide-prev .tranding-slide-img img {
+  transform: scale(0.9); /* Smaller scale for images on the sides */
+}
+}
