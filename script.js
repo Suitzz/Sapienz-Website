@@ -1,19 +1,59 @@
-document.addEventListener("DOMContentLoaded", function () {
-            // Get all social media icons
-            var icons = document.querySelectorAll('.wrapper .icon');
+document.addEventListener('DOMContentLoaded', function () {
+  var TrandingSlider = new Swiper('.tranding-slider', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    loop: true,
+    slidesPerView: 'auto', // Set 'auto' to enable variable widths
+    spaceBetween: -100,
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      scale: 0.8, // Scale down not active slides
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      320: {
+        spaceBetween: -100,
+        coverflowEffect: {
+          scale: 0.7 // Smaller scale for smaller viewport
+        },
+      },
+      768: {
+        spaceBetween: -100,
+        coverflowEffect: {
+          scale: 0.8 // Slightly larger scale for larger viewport
+        },
+      },
+      1024: {
+        spaceBetween:-100,
+        coverflowEffect: {
+          scale: 0.8 // Adjust as needed for the largest viewport
+        },
+      }
+    }
+  });
+});
 
-            // Attach click event listener to each icon
-            icons.forEach(function (icon) {
-                // Find the link within the icon
-                var link = icon.querySelector('a');
 
-                // Attach the click event listener
-                link.addEventListener('click', function (event) {
-                    // Get the URL from the link's href attribute
-                    var url = link.getAttribute('href');
 
-                    // Open the link in a new tab
-                    window.open(url, '_blank');
-                });
-            });
-        });
+document.querySelectorAll('.image').forEach(card => {
+  card.addEventListener('click', function() {
+      // Add the click animation
+      card.classList.add('card-clicked');
+      setTimeout(() => {
+          card.classList.remove('card-clicked');
+          // Redirect to the new page
+          window.location.href = '/index.html';
+      }, 300);
+  });
+});
