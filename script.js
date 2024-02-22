@@ -1,59 +1,62 @@
-document.addEventListener('DOMContentLoaded', function () {
-  var TrandingSlider = new Swiper('.tranding-slider', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    loop: true,
-    slidesPerView: 'auto', // Set 'auto' to enable variable widths
-    spaceBetween: -100,
-    coverflowEffect: {
-      rotate: 0,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      scale: 0.8, // Scale down not active slides
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      320: {
-        spaceBetween: -100,
-        coverflowEffect: {
-          scale: 0.7 // Smaller scale for smaller viewport
-        },
-      },
-      768: {
-        spaceBetween: -100,
-        coverflowEffect: {
-          scale: 0.8 // Slightly larger scale for larger viewport
-        },
-      },
-      1024: {
-        spaceBetween:-100,
-        coverflowEffect: {
-          scale: 0.8 // Adjust as needed for the largest viewport
-        },
-      }
-    }
-  });
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const cardContainers = document.querySelectorAll('.card-container');
 
+    cardContainers.forEach(container => {
+        container.addEventListener('click', function() {
+            const url = container.dataset.href;
+            if (url) {
+                window.location.href = url;
+            }
+            container.classList.add('click-animation');
+            setTimeout(() => container.classList.remove('click-animation'), 300); // Animation duration
+        });
+        container.style.cursor = 'pointer';
+    });
 
+    cardContainers.forEach((container, index) => {
+        const glowEffect = document.createElement('div');
+        glowEffect.classList.add('glow-effect', index === 0 ? 'blue-glow' : 'purple-glow');
+        glowEffect.style.position = 'absolute';
+        glowEffect.style.width = '550px';
+        glowEffect.style.height = '550px';
+        glowEffect.style.borderRadius = '50%';
+        glowEffect.style.transform = 'translate(-50%, -50%)';
+        glowEffect.style.opacity = '0'; // Start invisible
+        container.appendChild(glowEffect);
+    });
 
-document.querySelectorAll('.image').forEach(card => {
-  card.addEventListener('click', function() {
-      // Add the click animation
-      card.classList.add('card-clicked');
-      setTimeout(() => {
-          card.classList.remove('card-clicked');
-          // Redirect to the new page
-          window.location.href = '/index.html';
-      }, 300);
-  });
+    document.addEventListener('mousemove', function(e) {
+        if (window.innerWidth > 1024) {
+            cardContainers.forEach(container => {
+                const glowEffect = container.querySelector('.glow-effect');
+                const rect = container.getBoundingClientRect();
+                const mousePosX = e.clientX;
+                const mousePosY = e.clientY;
+
+                const overCard = mousePosX >= rect.left && mousePosX <= rect.right && mousePosY >= rect.top && mousePosY <= rect.bottom;
+
+                // Adjust these values to change the glow's opacity when over the card and the fade effect
+                const maxOpacityOverCard = 0.2; // Max opacity when cursor is directly over the card
+                const maxOpacityNearCard = 0.2; // Max opacity when cursor is near the card but not directly over it
+                const fadeDistance = 150; // Distance from the card where the glow effect starts to fade
+
+                if (overCard) {
+                    glowEffect.style.opacity = maxOpacityOverCard.toString();
+                } else {
+                    const distance = Math.min(
+                        Math.abs(rect.left - mousePosX),
+                        Math.abs(rect.right - mousePosX),
+                        Math.abs(rect.top - mousePosY),
+                        Math.abs(rect.bottom - mousePosY)
+                    );
+
+                    let opacity = distance <= fadeDistance ? Math.max(0, 1 - (distance / fadeDistance)) * maxOpacityNearCard : 0;
+                    glowEffect.style.opacity = opacity.toString();
+                }
+
+                glowEffect.style.left = `${mousePosX - rect.left}px`;
+                glowEffect.style.top = `${mousePosY - rect.top}px`;
+            });
+        }
+    });
 });
